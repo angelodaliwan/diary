@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -30,11 +31,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function __construct($name, $age, $email)
+    public function diaries()
     {
-        $this->name = $name;
-        $this->age = $age;
-        $this->email = $email;
+        return $this->hasMany('App\Models\Diary', 'user_id');
     }
 
     public function name()

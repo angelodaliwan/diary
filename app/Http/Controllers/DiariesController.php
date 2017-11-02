@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Diary;
+use App\User;
 
 class DiariesController extends Controller
 {
@@ -16,8 +17,13 @@ class DiariesController extends Controller
    		return view('diaries.index');
    }
 
-   public function show(Diary $diary)
+   public function show($user)
    {
-   		dd($diary);
+      $user = User::findOrFail($user)->first();
+      foreach($user->diaries as $diary)
+      {
+         dd($diary->diaries_paragraph);
+      }
+      return view('diaries.show', compact('user'));
    }	
 }
