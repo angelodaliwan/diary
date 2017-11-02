@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('diaries/lists', 'DiariesController@index');
+Route::get('diaries/{diary}/show', 'DiariesController@show');
