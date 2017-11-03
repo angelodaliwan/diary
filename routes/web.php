@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('user/{user}/show', 'DiariesController@show');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('diaries/lists', 'DiariesController@index');
-Route::get('user/{user}/show', 'DiariesController@show');
