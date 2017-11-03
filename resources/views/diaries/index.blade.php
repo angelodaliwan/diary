@@ -2,7 +2,11 @@
 
 @section('content')
 	<div class="container">
-		<h1>Vue JS</h1>
+		<div class="row">
+			<div class="col-sm-4">
+				<h1>Vue JS</h1>
+			</div>
+		</div>
 		<example-component></example-component>
-	</div>	
+	</div>
 @endsection
