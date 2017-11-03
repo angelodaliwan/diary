@@ -23,8 +23,8 @@ class DiariesController extends Controller
       return view('diaries.show', compact('users'));
    }
 
-	 public function create()
-	 {
-		 return view('diaries.create');
+	 public function create(User $user)
+	 {	
+		 return view('diaries.create', compact('user'));
 	 }
 }
