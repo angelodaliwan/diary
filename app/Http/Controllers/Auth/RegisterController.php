@@ -54,10 +54,10 @@ class RegisterController extends Controller
       ];
 
       $message = [
-        'password.required' => 'This password need to input UpperCase and LowerCase Letter with numbers and special characters',
+        'password.regex' => 'This password need to input UpperCase and LowerCase Letter with numbers and special characters minimum of 8 characters',
       ];
 
-      $validate = Validator::make($data,$rules, $message);
+      $validate = Validator::make($data, $rules, $message);
 
       return $validate;
     }
