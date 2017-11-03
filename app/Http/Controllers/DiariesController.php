@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Diary;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class DiariesController extends Controller
 {
@@ -20,18 +21,19 @@ class DiariesController extends Controller
    public function show($user)
    {
       $users = User::findOrFail($user)->first();
-      return view('diaries.show', compact('users'));
+			$diaries = $users->diaries()->paginate(3);
+      return view('diaries.show', compact('users', 'diaries'));
    }
 
 	 public function create(User $user)
 	 {
+
 		 return view('diaries.create', compact('user'));
 	 }
 
 	 public function save(User $user)
 	 {
-		//  dd(request('diary_paragraph'));
-		//  dd($user, request()->all());
+
 		 $user->diaries()->create([
 			 'user_id' => $user->id,
 			 'diaries_paragraph' => request('diaries_paragraph'),

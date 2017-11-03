@@ -3,26 +3,22 @@
 @section('content')
     <div class="container">
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-4">
           <div>
-            <h1>{{$users->name}}</h1>
+            <h3>{{$users->name}}</h3>
           </div>
         </div>
         <div class="col-sm-4">
-          @foreach($users->diaries as $user)
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th>
-                      <td>
-                        {{$user->diaries_paragraph}}
-                      </td>
-                    </th>
-                  </tr>
-                </thead>
-            </table>
+          @foreach($diaries as $diary)
+            <div class="panel panel-primary">
+              <div class="panel-heading">{{$diary->created_date}}</div>
+              <div class="panel-body">
+                  {{$diary->diaries_paragraph}}
+              </div>
+            </div>
           @endforeach
         </div>
+        {{ $diaries->links() }}
       </div>
     </div>
 
