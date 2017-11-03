@@ -10,7 +10,7 @@ class DiariesController extends Controller
 {
 	public function __construct()
 	{
-		// $this->middleware('auth');
+		$this->middleware('auth');
 	}
 
    public function index(){
@@ -22,4 +22,9 @@ class DiariesController extends Controller
       $users = User::findOrFail($user)->first();
       return view('diaries.show', compact('users'));
    }
+
+	 public function create()
+	 {
+		 return view('diaries.create');
+	 }
 }
