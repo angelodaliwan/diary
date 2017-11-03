@@ -24,7 +24,20 @@ class DiariesController extends Controller
    }
 
 	 public function create(User $user)
-	 {	
+	 {
 		 return view('diaries.create', compact('user'));
+	 }
+
+	 public function save(User $user)
+	 {
+		//  dd(request('diary_paragraph'));
+		//  dd($user, request()->all());
+		 $user->diaries()->create([
+			 'user_id' => $user->id,
+			 'diaries_paragraph' => request('diaries_paragraph'),
+			 'created_date' =>  request('created_date'),
+		 ]);
+
+		 return back();
 	 }
 }
