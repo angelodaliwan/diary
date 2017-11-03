@@ -18,22 +18,19 @@ class DiariesController extends Controller
    		return view('diaries.index');
    }
 
-   public function show($user)
+   public function show(User $user)
    {
-      $users = User::findOrFail($user)->first();
-			$diaries = $users->diaries()->paginate(3);
-      return view('diaries.show', compact('users', 'diaries'));
+		$diaries = $user->diaries()->paginate(3);
+	  	return view('diaries.show', compact('user', 'diaries'));
    }
 
 	 public function create(User $user)
 	 {
-
 		 return view('diaries.create', compact('user'));
 	 }
 
 	 public function save(User $user)
 	 {
-
 		 $user->diaries()->create([
 			 'user_id' => $user->id,
 			 'diaries_paragraph' => request('diaries_paragraph'),
@@ -41,5 +38,12 @@ class DiariesController extends Controller
 		 ]);
 
 		 return back();
+	 }
+
+	 public function edit(User $user, $id)
+	 {
+	 	$diary = Diary::findOrFail($id);
+
+	 	return view('diaries.edit', compact('diary', 'user'));
 	 }
 }
