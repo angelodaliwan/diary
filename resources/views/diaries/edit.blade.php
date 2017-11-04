@@ -7,11 +7,14 @@
 				@include('diaries.partial.details')
 			</div>
 			<div class="col-md-4">
-				{!! BootForm::open() !!}
-				{!! BootForm::bind($edit_diary) !!}
-				{!! BootForm::date('Created At', 'created_date') !!}
-				{!! BootForm::textarea('Diary Paragraph', 'diaries_paragraph') !!}
-				{!! BootForm::submit('Update') !!}
+				<div>
+					{!! BootForm::open()->action('/diary/' . $edit_diary->id)->put() !!}
+					{!! BootForm::bind($edit_diary) !!} 
+					{!! BootForm::date('Created At', 'created_date') !!}
+					{!! BootForm::textarea('Diary Paragraph', 'diaries_paragraph') !!}
+					{!! BootForm::submit('Update') !!}
+					{!! BootForm::close() !!}
+				</div>
 			</div>
 		</div>
 	</div>

@@ -37,7 +37,7 @@ class DiariesController extends Controller
 			 'created_date' =>  request('created_date'),
 		 ]);
 
-		 return back();
+		 return redirect('/user/' . auth()->user()->id . '/show-diaries');
 	 }
 
 	 public function edit($diary)
@@ -51,8 +51,9 @@ class DiariesController extends Controller
 	 	}	
 	 }
 
-	 public function update($diary)
+	 public function update(Diary $diary)
 	 {
-
+	 	$diary->update(request()->all());
+	 	return back();	
 	 }
 }
