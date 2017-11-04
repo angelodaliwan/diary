@@ -10,12 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+
 
 Route::get('user/create-diary', 'DiariesController@create');
 Route::post('user/{user}/save-diary', 'DiariesController@save');
