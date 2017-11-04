@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('user/{user}/show-diaries', 'DiariesController@show');
 Route::get('user/{user}/create-diary', 'DiariesController@create');
 Route::post('user/{user}/save-diary', 'DiariesController@save');
-Route::get('user/{user}/edit-diary/{id}','DiariesController@edit');
+Route::get('user/{user}/edit-diary/{diary}','DiariesController@edit');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('diaries/lists', 'DiariesController@index');

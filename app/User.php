@@ -15,9 +15,6 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $name;
-    protected $age;
-    protected $email;
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -34,20 +31,5 @@ class User extends Authenticatable
     public function diaries()
     {
         return $this->hasMany('App\Models\Diary', 'user_id');
-    }
-
-    public function name()
-    {
-        return $this->name;
-    }
-
-    public function age()
-    {
-        return $this->age;
-    }
-
-    public function email()
-    {
-        return $this->email;
     }
 }

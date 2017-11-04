@@ -40,10 +40,10 @@ class DiariesController extends Controller
 		 return back();
 	 }
 
-	 public function edit(User $user, $id)
+	 public function edit(User $user, Diary  $diary)
 	 {
-	 	$diary = Diary::findOrFail($id);
-
-	 	return view('diaries.edit', compact('diary', 'user'));
+		 dd($user->id == $diary->user_id);
+		 $edit_diary = $diary->find($user->id);
+		return view('diaries.edit', compact('diary', 'user'));
 	 }
 }
