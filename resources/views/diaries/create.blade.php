@@ -7,7 +7,7 @@
           @include('diaries.partial.details')
         </div>
         <div class="col-md-8">
-          {!! BootForm::open()->action('/user/'. $user->id . '/save-diary')->post() !!}
+          {!! BootForm::open()->action('/user/' .auth()->user()->id.'/save-diary')->post() !!}
           {!! BootForm::date('Date', 'created_date') !!}
           {!! BootForm::textarea('Diary Paragraph', 'diaries_paragraph') !!}
           {!! BootForm::submit('Save') !!}

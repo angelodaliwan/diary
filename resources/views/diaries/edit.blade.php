@@ -8,7 +8,7 @@
 			</div>
 			<div class="col-md-4">
 				{!! BootForm::open() !!}
-				{!! BootForm::bind($diary) !!}
+				{!! BootForm::bind($edit_diary) !!}
 				{!! BootForm::date('Created At', 'created_date') !!}
 				{!! BootForm::textarea('Diary Paragraph', 'diaries_paragraph') !!}
 				{!! BootForm::submit('Update') !!}

@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-sm-4">
           <div>
-            <h3>{{$user->name}}</h3>
+            <h3>{{Auth::user()->name}}</h3>
           </div>
         </div>
         <div class="col-sm-4">

@@ -18,21 +18,21 @@ class DiariesController extends Controller
    		return view('diaries.index');
    }
 
-   public function show(User $user)
+   public function show()
    {
-		$diaries = $user->diaries()->paginate(3);
-	  	return view('diaries.show', compact('user', 'diaries'));
+		$diaries = Auth::user()->diaries()->paginate(3);
+	  	return view('diaries.show', compact('diaries'));
    }
 
-	 public function create(User $user)
+	 public function create()
 	 {
-		 return view('diaries.create', compact('user'));
+	 	return view('diaries.create');
 	 }
 
 	 public function save(User $user)
 	 {
 		 $user->diaries()->create([
-			 'user_id' => $user->id,
+			 'user_id' => auth()->user()->id,
 			 'diaries_paragraph' => request('diaries_paragraph'),
 			 'created_date' =>  request('created_date'),
 		 ]);
@@ -40,10 +40,19 @@ class DiariesController extends Controller
 		 return back();
 	 }
 
-	 public function edit(User $user, Diary  $diary)
+	 public function edit($diary)
 	 {
-		 dd($user->id == $diary->user_id);
-		 $edit_diary = $diary->find($user->id);
-		return view('diaries.edit', compact('diary', 'user'));
+	 	$edit_diary = Diary::findOrFail($diary);
+	 	if(\auth()->user()->id != $edit_diary->user_id)
+	 	{
+	 		return back();
+	 	} else {
+	 		return view('diaries.edit', compact('edit_diary'));	
+	 	}	
+	 }
+
+	 public function update($diary)
+	 {
+
 	 }
 }

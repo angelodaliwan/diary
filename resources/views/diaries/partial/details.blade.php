@@ -1,2 +1,2 @@
-<h3>{{$user->name}}</h3>
-<h4>{{$user->email}}</h4>
+<h3>{{Auth::user()->name}}</h3>
+<h4>{{Auth::user()->email}}</h4>
