@@ -12,6 +12,8 @@
 */
 Auth::routes();
 
+Route::get('user/edit-profile', 'UsersController@index');
+
 
 Route::get('user/create-diary', 'DiariesController@create');
 Route::post('user/{user}/save-diary', 'DiariesController@save');
