@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 class UsersController extends Controller
 {
@@ -19,17 +22,21 @@ class UsersController extends Controller
     }
     public function update(Request $request, $user)
     {
-			$auth = User::findOrFail($user);
-			$this->validate($request, [
-				 'email' =>  'unique:users,email,'. $auth->id,
-				 'password' => 'nullable|min:8',
-			]);
+		$path = request()->file('image');
+        $store = Storage::disk('local')->put($path, 'Contents');
+     
+		$auth = User::findOrFail($user);
 
-			$auth->name = $request['name'];
-			$auth->email = $request['email'];
-			$auth->password = bcrypt($request['password']);
-			$auth->save();
+		$this->validate(request(), [
+			 'email' =>  'unique:users,email,'. $auth->id,
+			 'password' => 'nullable|min:8',
+		]);
 
-			return back();
+		$auth->name = request('name');
+		$auth->email = request('email');
+		$auth->password = bcrypt(request('password'));
+		$auth->save();
+
+		return back();
     }
 }

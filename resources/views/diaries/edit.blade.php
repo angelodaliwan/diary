@@ -9,7 +9,8 @@
 			<div class="col-md-4">
 				<div>
 					{!! BootForm::open()->action('/diary/' . $edit_diary->id)->put() !!}
-					{!! BootForm::bind($edit_diary) !!} 
+					{!! BootForm::bind($edit_diary) !!}
+					<input type="file" name="myImage" />
 					{!! BootForm::date('Created At', 'created_date') !!}
 					{!! BootForm::textarea('Diary Paragraph', 'diaries_paragraph') !!}
 					{!! BootForm::submit('Update') !!}
