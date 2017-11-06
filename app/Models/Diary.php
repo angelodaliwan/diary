@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Diary extends Model
 {
     protected $fillable = [
-    	'user_id', 
+    	'user_id',
     	'diaries_paragraph',
     	'created_date',
 	];
 
 	public function users()
 	{
-		return $this->hasMany('App\User');
+		return $this->belongsTo('App\User', 'user_id');
 	}
 }

@@ -5,16 +5,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
+                <div class="panel-heading">Welcome To You Diary Profile</div>
                 <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+                    <a href="/user/create-diary" class="btn btn-primary">Create Diary</a>
+                    <a href="/user/{{Auth::user()->id}}/show-diaries" class="btn btn-primary">Show Diaries</a>
                 </div>
             </div>
         </div>
