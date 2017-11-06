@@ -13,6 +13,7 @@
 Auth::routes();
 
 Route::get('user/edit-profile', 'UsersController@index');
+Route::put('user/{user}', 'UsersController@update');
 
 
 Route::get('user/create-diary', 'DiariesController@create');

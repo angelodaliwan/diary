@@ -11,7 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ url('/home') }}">
                 My Home
             </a>
         </div>
@@ -36,7 +36,7 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                              <a href="#">Edit Profile</a>
+                              <a href="/user/edit-profile">Edit Profile</a>
                             </li>
                             <li>
                                 <a href="{{ route('logout') }}"
