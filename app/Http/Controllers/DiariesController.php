@@ -47,13 +47,19 @@ class DiariesController extends Controller
 		{
 			return back();
 		} else {
-			return view('diaries.edit', compact('edit_diary'));	
-		}	
+			return view('diaries.edit', compact('edit_diary'));
+		}
 	}
 
 	public function update(Diary $diary)
 	{
 		$diary->update(request()->all());
-		return back();	
+		return back();
+	}
+
+	public function delete($diary)
+	{
+		Diary::findOrFail($diary)->delete();
+		return back();
 	}
 }
