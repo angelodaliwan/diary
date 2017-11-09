@@ -22,9 +22,6 @@ class UsersController extends Controller
     }
     public function update(Request $request, $user)
     {
-		$path = request()->file('image');
-        $store = Storage::disk('local')->put($path, 'Contents');
-     
 		$auth = User::findOrFail($user);
 
 		$this->validate(request(), [
@@ -32,8 +29,11 @@ class UsersController extends Controller
 			 'password' => 'nullable|min:8',
 		]);
 
+		$path = request()->file('image')->store('upload_image');
+
 		$auth->name = request('name');
 		$auth->email = request('email');
+		$auth->image_path = $path;
 		$auth->password = bcrypt(request('password'));
 		$auth->save();
 

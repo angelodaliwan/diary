@@ -45,17 +45,17 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/upload_image'),
+            'root' => storage_path('app/public/'),
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => storage_path('app/public/upload_image'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
-        's3' => [
+        's3' => [   
             'driver' => 's3',
             'key' => env('AWS_KEY'),
             'secret' => env('AWS_SECRET'),
