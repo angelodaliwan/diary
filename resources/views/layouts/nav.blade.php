@@ -33,7 +33,11 @@
                         
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
-                             <img style="border-radius: 50%;" weight="20" height="50px" src="{!! asset('/storage/' . auth()->user()->image_path) !!}"> 
+                            @if(\auth()->user()->image_path)
+                                <img style="border-radius: 50%;" weight="20" height="50px" src="{!! asset('/storage/' . auth()->user()->image_path) !!}">
+                            @else
+                                <img style="border-radius: 50%" weight="20" height="50px" src="{!! asset('/default_image/images.png') !!}">
+                            @endif
                         </a>
 
                         <ul class="dropdown-menu" role="menu">

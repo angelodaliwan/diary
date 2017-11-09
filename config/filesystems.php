@@ -55,6 +55,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'display' => [
+            'driver' => 'local',
+            'root' => public_path('default_image'),
+            'url' => env('APP_URL').'/default_image',
+            'visibility' => 'public',
+        ],
+
         's3' => [   
             'driver' => 's3',
             'key' => env('AWS_KEY'),
