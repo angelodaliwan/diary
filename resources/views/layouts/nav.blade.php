@@ -30,9 +30,10 @@
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
-                         <img style="border-radius: 50 %;" src="{!! asset('/storage/' . auth()->user()->image_path) !!}"> 
+                        
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
+                             <img style="border-radius: 50%;" weight="20" height="50px" src="{!! asset('/storage/' . auth()->user()->image_path) !!}"> 
                         </a>
 
                         <ul class="dropdown-menu" role="menu">

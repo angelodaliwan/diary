@@ -23,13 +23,13 @@ class UsersController extends Controller
     public function update(Request $request, $user)
     {
 		$auth = User::findOrFail($user);
+		$path = request()->file('image')->store('upload_image');
 
 		$this->validate(request(), [
 			 'email' =>  'unique:users,email,'. $auth->id,
 			 'password' => 'nullable|min:8',
+			 'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=200',
 		]);
-
-		$path = request()->file('image')->store('upload_image');
 
 		$auth->name = request('name');
 		$auth->email = request('email');
