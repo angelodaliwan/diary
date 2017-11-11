@@ -12,6 +12,7 @@
 						{!! BootForm::open(['files' => true])->action('/user/'. Auth::user()->id)->put()->multipart() !!}
 						{!! BootForm::bind($user) !!}
 						{!! BootForm::file('Upload Image', 'image')->id('image') !!}
+						<input type="color" id="background_color" name="background_color">
 						{!! BootForm::text('Name', 'name') !!}
 						{!! BootForm::email('Email', 'email') !!}
 						{!! BootForm::password('Password', 'password') !!}
