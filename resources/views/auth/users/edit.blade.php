@@ -13,6 +13,7 @@
 						{!! BootForm::bind($user) !!}
 						{!! BootForm::file('Upload Image', 'image')->id('image') !!}
 						<input type="color" id="background_color" name="background_color">
+						{!! BootForm::file('Upload Background Image', 'background_image')->id('background_image') !!}
 						{!! BootForm::text('Name', 'name') !!}
 						{!! BootForm::email('Email', 'email') !!}
 						{!! BootForm::password('Password', 'password') !!}

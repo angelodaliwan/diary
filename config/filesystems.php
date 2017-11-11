@@ -55,10 +55,17 @@ return [
             'visibility' => 'public',
         ],
 
-        'display' => [
+        'imageDisplay' => [
             'driver' => 'local',
             'root' => public_path('default_image'),
             'url' => env('APP_URL').'/default_image',
+            'visibility' => 'public',
+        ],
+
+         'backgroundDisplay' => [
+            'driver' => 'local',
+            'root' => public_path('app/public/upload_background_image'),
+            'url' => env('APP_URL').'/background_image',
             'visibility' => 'public',
         ],
 

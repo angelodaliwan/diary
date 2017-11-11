@@ -31,11 +31,18 @@ class UsersController extends Controller
 		]);
 
 		Storage::disk('local')->delete($auth->image_path);
+		Storage::disk('local')->delete($auth->background_image_path);
 		if(request('image') != null) {
 			$upload_image =  request()->file('image')->store('upload_image');
 			$auth->image_path = $upload_image; 	
 		} else {
 			$auth->image_path = "";
+		}
+		if(request('background_image') != null){
+			$background_image = request()->file('background_image')->store('upload_background_image');
+			$auth->background_image_path = $background_image;
+		} else {
+			$auth->background_image_path = "";
 		}
 
 		$auth->name = request('name');
