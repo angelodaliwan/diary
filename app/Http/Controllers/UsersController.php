@@ -21,7 +21,7 @@ class UsersController extends Controller
     	return view('auth.users.edit', compact('user'));
     }
     public function update(Request $request, $user)
-    {
+    {  
     	dd(request()->all());
 		$auth = User::findOrFail($user);
  		$this->validate(request(), [
@@ -31,13 +31,13 @@ class UsersController extends Controller
 		]);
 
 		Storage::disk('local')->delete($auth->image_path);
-		$upload_image =  request()->file('image')->store('upload_image');
-		
-		if(isset($upload_image)) {
+		if(request('image') != null) {
+			$upload_image =  request()->file('image')->store('upload_image');
 			$auth->image_path = $upload_image; 	
 		} else {
 			$auth->image_path = "";
 		}
+
 		$auth->name = request('name');
 		$auth->email = request('email');
 		$auth->background_color = request('background_color');
