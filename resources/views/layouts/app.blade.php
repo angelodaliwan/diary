@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: {{ auth()->user()->background_color }}">
     <div id="app">
         @include('layouts.nav')
         @yield('content')

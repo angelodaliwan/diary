@@ -22,7 +22,7 @@ class UsersController extends Controller
     }
     public function update(Request $request, $user)
     {  
-    	dd(request()->all());
+    	// dd(request()->all());
 		$auth = User::findOrFail($user);
  		$this->validate(request(), [
 			 'email' =>  'unique:users,email,'. $auth->id,
