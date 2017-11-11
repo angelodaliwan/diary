@@ -30,8 +30,8 @@ class UsersController extends Controller
 		]);
 
 		Storage::disk('local')->delete($auth->image_path);
+		
 		$auth->image_path = request()->file('image')->store('upload_image'); 
-
 		$auth->name = request('name');
 		$auth->email = request('email');
 		$auth->password = bcrypt(request('password'));
